@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: "Version to stamp into the packages, without the leading v"
+        description: Version to stamp into the packages, without the leading v
         required: true
 
 permissions:
@@ -27,7 +27,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: '21'
-          distribution: 'temurin'
+          distribution: temurin
 
       - uses: gradle/actions/setup-gradle@v4
 
@@ -104,7 +104,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: '21'
-          distribution: 'temurin'
+          distribution: temurin
 
       - uses: gradle/actions/setup-gradle@v4
 
@@ -189,7 +189,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: '21'
-          distribution: 'temurin'
+          distribution: temurin
 
       - uses: gradle/actions/setup-gradle@v4
 
@@ -264,10 +264,11 @@ jobs:
         with:
           tag_name: ${{ github.ref_type == 'tag' && github.ref_name || 'desktop-main' }}
           name: ${{ github.ref_type == 'tag' && format('BitChord Desktop {0}', github.ref_name) || 'BitChord Desktop - main' }}
-          draft: ${{ github.ref_type == 'tag' }}
+          draft: false
           prerelease: ${{ github.ref_type != 'tag' }}
-          make_latest: false
+          make_latest: ${{ github.ref_type == 'tag' }}
           target_commitish: main
+          overwrite_files: true
           fail_on_unmatched_files: true
           files: dist/*
         env:
