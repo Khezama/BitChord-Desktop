@@ -175,9 +175,10 @@ jobs:
   macos:
     name: macOS · dmg, pkg, zip (${{ matrix.arch }})
     strategy:
+      fail-fast: false
       matrix:
         include:
-          - os: macos-14
+          - os: macos-15
             arch: arm64
           - os: macos-15-intel
             arch: x64
