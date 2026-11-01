@@ -15,6 +15,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.Density
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
@@ -110,6 +112,8 @@ private fun desktopMain() = application {
         resizable = true,
     ) {
         val composeWindow = window
+        val uiScale by DesktopAppearanceSettings.uiScale.collectAsState()
+        val baseDensity = LocalDensity.current
         val requestedOpeningSize = remember { state.size }
         LaunchedEffect(composeWindow) {
             DesktopWindowVisibility.attachWindow(composeWindow)
@@ -179,6 +183,10 @@ private fun desktopMain() = application {
             )
         }
         CompositionLocalProvider(
+            LocalDensity provides Density(
+                density = baseDensity.density * uiScale,
+                fontScale = baseDensity.fontScale,
+            ),
             LocalDesktopWindowActions provides actions,
             LocalDesktopWindowScope provides this,
         ) {

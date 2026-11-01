@@ -6310,6 +6310,32 @@ private fun DesktopSettingsScreen(
             }
             if (section == DesktopSettingsSection.APPEARANCE) item {
                 SettingsGroup(DesktopStrings["appearance", "Appearance"]) {
+                    val uiScale by DesktopAppearanceSettings.uiScale.collectAsState()
+                    if (settingsRowVisible("Interface size", "Scale the desktop interface for readability")) {
+                        Column(Modifier.fillMaxWidth().padding(vertical = 12.dp)) {
+                            Row(
+                                Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically,
+                            ) {
+                                Column(Modifier.weight(1f)) {
+                                    Text("Interface size", fontWeight = FontWeight.Medium)
+                                    Text(
+                                        "Scale the desktop interface for readability",
+                                        color = DesktopSecondary,
+                                        style = MaterialTheme.typography.bodySmall,
+                                    )
+                                }
+                                Text("${(uiScale * 100).roundToInt()}%", color = DesktopSecondary)
+                            }
+                            DesktopBareSlider(
+                                value = uiScale,
+                                onValueChange = DesktopAppearanceSettings::setUiScale,
+                                valueRange = 0.9f..1.4f,
+                                steps = 4,
+                            )
+                        }
+                    }
                     val reduceDynamicBlur by DesktopAppearanceSettings.reduceDynamicBlur.collectAsState()
                     SettingsToggle(
                         DesktopStrings["reduce_dynamic_blur", "Reduce dynamic blur"],
