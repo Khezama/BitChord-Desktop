@@ -30,6 +30,12 @@
 > [!IMPORTANT]
 > BitChord is not affiliated with, endorsed by, or connected to YouTube or Google in any way. Use it at your own discretion.
 
+## Desktop edition
+
+This repository is the desktop edition of BitChord. It is based on the original BitChord mobile application and reuses its shared playback, account, lyrics, library and theming code for Windows, Linux and macOS.
+
+The original mobile project is maintained at [kushagrasinghx/BitChord](https://github.com/kushagrasinghx/BitChord). This desktop fork stays synchronized with its `main` branch and adds the JVM desktop application, native audio support, responsive window layouts and desktop packaging. Thanks to the original maintainers, contributors and every upstream project credited below for making this work possible.
+
 ---
 
 <div align="center">
@@ -89,13 +95,9 @@
 
 <h1><a id="download"></a>Download</h1>
 
-<a href="https://github.com/kushagrasinghx/BitChord/releases" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/JMcrafter26/badges@main/src/assets/supported/android/cozy.svg" alt="Download for Android" height="55"/></a>
-
-Desktop packages are published in the same Releases page for Windows, macOS (Intel and Apple Silicon), and Linux. Linux users can use the AppImage on any standard distribution; `.deb` and `.rpm` packages are also available.
+Desktop packages are published in the [Releases](https://github.com/Khezama/BitChord-Desktop/releases) page for Windows, macOS (Intel and Apple Silicon), and Linux. Linux users can use the AppImage on any standard distribution; `.deb` and `.rpm` packages are also available.
 
 Desktop builds include their Java runtime, FFmpeg and Automix native dependencies. The desktop app checks the latest official GitHub release at startup and links to the correct installer for the current platform when an update is available. See [DESKTOP.md](DESKTOP.md) for development and packaging details.
-
-Grab the latest signed APK from the [Releases](https://github.com/kushagrasinghx/BitChord/releases) page. Sideloading requires enabling "Install unknown apps" for whichever app you download it with.
 
 
 </div>

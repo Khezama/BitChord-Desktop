@@ -35,6 +35,9 @@ jobs:
             exit 0
           fi
           git merge --no-edit upstream/main
+          # This fork is desktop-only: upstream Android and TV release workflows
+          # must not be reintroduced by a later synchronization.
+          git rm -f .github/workflows/android.yml .github/workflows/tv.yml 2>/dev/null || true
           git push origin HEAD:main
           echo "changed=true" >> "$GITHUB_OUTPUT"
 
@@ -46,4 +49,4 @@ jobs:
           gh workflow run release.yml \
             --repo "${GITHUB_REPOSITORY}" \
             --ref main \
-            -f version="1.9.0-main.${GITHUB_RUN_NUMBER}"
+            -f version="1.9.0-main"
