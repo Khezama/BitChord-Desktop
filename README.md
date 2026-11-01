@@ -91,6 +91,10 @@
 
 <a href="https://github.com/kushagrasinghx/BitChord/releases" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/JMcrafter26/badges@main/src/assets/supported/android/cozy.svg" alt="Download for Android" height="55"/></a>
 
+Desktop packages are published in the same Releases page for Windows, macOS (Intel and Apple Silicon), and Linux. Linux users can use the AppImage on any standard distribution; `.deb` and `.rpm` packages are also available.
+
+Desktop builds include their Java runtime, FFmpeg and Automix native dependencies. The desktop app checks the latest official GitHub release at startup and links to the correct installer for the current platform when an update is available. See [DESKTOP.md](DESKTOP.md) for development and packaging details.
+
 Grab the latest signed APK from the [Releases](https://github.com/kushagrasinghx/BitChord/releases) page. Sideloading requires enabling "Install unknown apps" for whichever app you download it with.
 
 
